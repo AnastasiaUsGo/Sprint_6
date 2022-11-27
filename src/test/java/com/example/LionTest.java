@@ -31,39 +31,26 @@ public class LionTest {
         return new Object[][]{
                 { "Самец", true },
                 { "Самка", false },
-                { "Детёныш", false }
         };
     }
 
     @Test
-    public void testGetKittens() {
-        try{
+    public void testGetKittens() throws Exception {
             Lion lion = new Lion(male, feline);
             Mockito.when(feline.getKittens()).thenReturn(2);
             assertEquals(2, lion.getKittens());
-        } catch (Exception thrown) {
-            assertEquals("Используйте допустимые значения пола животного - самец или самка", thrown.getMessage());
-        }
     }
 
     @Test
-    public void testDoesHaveMane() {
-        try{
+    public void testDoesHaveMane() throws Exception {
             Lion lion = new Lion(male, feline);
             assertEquals(expectedHasMane, lion.doesHaveMane());
-        } catch (Exception thrown) {
-            assertEquals("Используйте допустимые значения пола животного - самец или самка", thrown.getMessage());
-        }
     }
 
     @Test
-    public void testGetFood() {
-        try{
+    public void testGetFood() throws Exception {
             Lion lion = new Lion(male, feline);
             Mockito.when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
             assertEquals((List.of("Животные", "Птицы", "Рыба")), lion.getFood());
-        } catch (Exception thrown) {
-            assertEquals("Используйте допустимые значения пола животного - самец или самка", thrown.getMessage());
-        }
     }
 }
